@@ -44,9 +44,16 @@ Detailed set up instructions can be found in the [DNS Seeder Setup Guide](/SETUP
 ## Quick Setup
 
 ### Step 1 - Install Prerequisites
-
+- For Ubuntu
 ```
 sudo apt-get install git build-essential libboost-all-dev libssl-dev libcurl4-openssl-dev libconfig++-dev
+```
+
+- For Fedora
+```
+sudo yum install boost-devel boost \
+                 curl libcurl-devel \
+                 libconfig libconfig-devel
 ```
 
 ### Step 2 - Download Source Code
@@ -157,7 +164,7 @@ Once the `setcap` command is complete, you can start the seeder app as per norma
 
 ```
 sudo iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 15353
-``` 
+```
 
 After adding the new iptables rule, the seeder app can be called without `sudo`, but you must always specify the redirected port using the `-p` argument:
 
